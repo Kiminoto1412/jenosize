@@ -5,6 +5,7 @@ const router = express.Router();
 const jenosizeController = require("../controllers/jenosizeController");
 
 
+router.post("/placeSearch", jenosizeController.placeSearch);
 router.post("/game24", jenosizeController.game24);
 
 module.exports = router

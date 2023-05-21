@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 exports.game24 = async (req, res, next) => {
   try {
     const { numbers } = req.body;
@@ -98,6 +100,28 @@ exports.game24 = async (req, res, next) => {
     let result = solve24Game(numbers);
 
     res.json({ result });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+exports.placeSearch = async (req, res, next) => {
+  try {
+    const keyword = req.query.keyword || "restaurant";
+    const location = req.query.location ;
+    const API_KEY = process.env.API_KEY || 8081;
+
+    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${keyword}&location=${location}&key=${API_KEY}`;
+
+    axios.get(url).then((response) => {
+        res.json(response.data);
+      })
+      .catch((error) => {
+        res.status(500).json({ error: "Something went wrong." });
+      });
+
+    // res.json({ result });
   } catch (err) {
     next(err);
   }
