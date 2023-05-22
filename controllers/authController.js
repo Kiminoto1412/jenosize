@@ -6,10 +6,8 @@ const db = admin.firestore();
 exports.registerWithEmailAndPassword = async (req, res, next) => {
   const { email, password } = req.body;
   try {
-    console.log(email, password);
 
     const userResponse = await admin.auth().createUser({ email, password });
-    console.log(userResponse.user.uid);
 
     res.status(200).json({ uid:userResponse.user.uid });
   } catch (error) {

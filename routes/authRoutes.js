@@ -5,7 +5,6 @@ const router = express.Router();
 const authController = require("../controllers/authController");
 const authMiddleware = require("../middlewares/authMiddleware");
 
-console.log(1212);
 
 router.post("/register", authController.registerWithEmailAndPassword);
 router.get("/login/google", authMiddleware, authController.loginWithGoogle);
