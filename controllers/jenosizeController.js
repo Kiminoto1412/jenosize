@@ -109,7 +109,6 @@ exports.game24 = async (req, res, next) => {
 exports.placeSearch = async (req, res, next) => {
   try {
     const keyword = req.query.keyword || "restaurant";
-    console.log(keyword);
     
     const location = req.query.location ;
     const API_KEY = process.env.API_KEY || 8081;
